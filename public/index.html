@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>PalBreeder</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script type="text/javascript" src="index.bundle.js" ></script>
+    <link rel="stylesheet" href="index.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading" class="progressbar">
+        <div class="inner"></div>
+    </div>
+
+    <div class="drag-enter">Drop to upload</div>
+
+    <div class="page">
+        <div class="content">
+            <div class="inventory">
+                <div class="topbar">
+                    <span class="title">Pals</span>
+                    <div class="control">
+                        <span class="add"><span class="material-symbols-outlined">add</span></span>
+                        <span class="sub"><span class="material-symbols-outlined">remove</span></span>
+                    </div>
+                </div>
+                <div class="pal-list">
+                </div>
+            </div>
+
+
+            <div class="tabbed-pages">
+                <div class="topbar">
+                    <div class="tabs">
+                        <button class="tab active">Pal Viewer</button>
+                        <button class="tab">Calculator</button>
+                        <button class="tab">Breed Path</button>
+                        <button class="tab">Most Optimal</button>
+                    </div>
+                </div>
+
+                <!-- TODO: Tab control for pages... -->
+                <div class="tabbed-content active">
+                    <!-- TODO: Show the stats of the currently clicked Pal -->
+                    <div class="palviewer">
+
+                        <div class="listing-info">
+                            <div class="level-info">
+                                <span style="margin-top: 10px">Level</span>
+                                <span class="level">11</span>
+                            </div>
+                            <div class="info">
+                                <div class="top">
+                                    <div class="name">Lamball</div>
+                                    <span id="gender" class="material-symbols-outlined">female</span>
+                                </div>
+                                <hr />
+                                <div class="bottom">
+                                    <div class="exp">
+                                        <div class="top">
+                                            <span>NEXT</span>
+                                            <span id="left">304</span>
+                                        </div>
+
+                                        <div class="bottom">
+                                            <div id="exp" class="progressbar">
+                                                <div class="inner"></div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img draggable="false" src="images/element/Normal.webp" class="element" />
+                                    <img draggable="false" src="images/element/Dark.webp" class="subelement" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-info">
+                            <div class="left">
+                                <div class="portrait">
+                                    <img id="portrait" draggable="false" class="circular-square" src="images/pals/1.webp" />
+                                </div>
+                                <div class="condenser">
+                                    <span class="material-symbols-outlined dark">star</span>
+                                    <span class="material-symbols-outlined dark">star</span>
+                                    <span class="material-symbols-outlined dark">star</span>
+                                    <span class="material-symbols-outlined dark">star</span>
+                                </div>
+                                <div class="rank">+0</div>
+                            </div>
+                            <div class="right space-around">
+                                <div class="top">
+                                    <div class="flex-row align-center w-100">
+                                        <span class="material-symbols-outlined icon">favorite</span>
+                                        <div id="health" class="progressbar">
+                                            <div class="stat-text">
+                                                <p class="current">100</p>/<p class="max">100</p>
+                                            </div>
+                                            <div class="inner green"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row align-center m-2 w-100">
+                                        <span class="material-symbols-outlined icon">restaurant</span>
+                                        <div id="satiety" class="progressbar">
+                                            <div class="inner orange"></div>
+                                            <div class="stat-text">
+                                                <span class="current">100</span>/<span class="max">100</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row align-center space-between w-100">
+                                        <span>SAN</span>
+                                        <div class="stat-text">
+                                            <span id="sanity" class="current">100</span>/<span class="max">100</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="flex-row align-center space-between w-100">
+                                        <div class="flex-row align-center">
+                                            <span class="material-symbols-outlined icon">swords</span>
+                                            <span>Attack</span>
+                                        </div>
+
+                                        <span id="attack">100</span>
+                                    </div>
+                                    <div class="flex-row align-center space-between w-100">
+                                        <div class="flex-row align-center">
+                                            <span class="material-symbols-outlined icon">shield</span>
+                                            <span>Defense</span>
+                                        </div>
+                                        <span id="defense">100</span>
+                                    </div>
+                                    <div class="flex-row align-center space-between w-100">
+                                        <div class="flex-row align-center">
+                                            <span class="material-symbols-outlined icon">construction</span>
+                                            <span>Work Speed</span>
+                                        </div>
+                                        <span id="workspeed">100</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suitability">
+                            <div class="info">
+                                <span class="kindling"></span>
+                                <img src="images/suitability/kindling.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="watering"></span>
+                                <img src="images/suitability/watering.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="planting"></span>
+                                <img src="images/suitability/planting.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="electric"></span>
+                                <img src="images/suitability/electric.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="handiwork"></span>
+                                <img src="images/suitability/handiwork.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="gathering"></span>
+                                <img src="images/suitability/gathering.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="logging"></span>
+                                <img src="images/suitability/logging.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="mining"></span>
+                                <img src="images/suitability/mining.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="medicine"></span>
+                                <img src="images/suitability/medicine.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="cooling"></span>
+                                <img src="images/suitability/cooling.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="transport"></span>
+                                <img src="images/suitability/transport.webp" />
+                            </div>
+                            <div class="info">
+                                <span class="farming"></span>
+                                <img src="images/suitability/farming.webp" />
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="passives">
+                            <div class="top">
+                                <div class="passive">
+                                    <span class="name"></span>
+                                    <span id="symbol" class="material-symbols-outlined"></span>
+                                </div>
+                                <div class="passive">
+                                    <span class="name"></span>
+                                    <span id="symbol" class="material-symbols-outlined"></span>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="passive">
+                                    <span class="name"></span>
+                                    <span id="symbol" class="material-symbols-outlined"></span>
+                                </div>
+                                <div class="passive">
+                                    <span class="name"></span>
+                                    <span id="symbol" class="material-symbols-outlined"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabbed-content">
+                    <div class="calculator">
+                    </div>
+                </div>
+
+                <div class="tabbed-content">
+                    <div class="breed-path">
+                        <table>
+                            <tr>
+                                <td>Start</td>
+                                <td><select id="start" class="pals"></select></td>
+                            </tr>
+                            <tr>
+                                <td>Result</td>
+                                <td><select id="result" class="pals"></select></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button id="calc">Calculate</button>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div id="path"></div>
+                    </div>
+                </div>
+
+                <div class="tabbed-content">
+                    <div class="most-optimal">
+                        <div class="desired-pal">Desired Pal <select class="pals"></select></div>
+                        <div class="desired-traits">
+                            <select class="traits">
+                                <option name="none" value="none" selected>None</option>
+                            </select>
+                            <select class="traits">
+                                <option name="none" value="none" selected>None</option>
+                            </select>
+                            <select class="traits">
+                                <option name="none" value="none" selected>None</option>
+                            </select>
+                            <select class="traits">
+                                <option name="none" value="none" selected>None</option>
+                            </select>
+                        </div>
+                        <button class="calculate">Calculate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="sort">Sort</a>
+
+    <div class="popup">
+        <div class="error hide">
+            <div class="content">
+                <span class="close">X</span>
+                <p class="header">Error</p>
+                <p class="text"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "palbreeder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack serve --watch",
+    "build": "webpack",
+    "test": "mocha",
+    "sass": "sass ./src/style.scss:style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "json-with-bigint": "^2.1.0",
+    "pako": "^2.1.0",
+    "palparser-wasm": "github:beemerwt/palparser",
+    "process": "^0.11.10"
+  },
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "file-loader": "^6.2.0",
+    "mocha": "^10.2.0",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.1.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
