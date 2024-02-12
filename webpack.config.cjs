@@ -41,12 +41,12 @@ module.exports = {
   devtool: 'inline-source-map',
   output: {
     filename: 'index.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     clean: true,
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: path.join(__dirname, 'docs'),
       watch: true
     },
     compress: true,
